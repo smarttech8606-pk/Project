@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Smart Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html,body{ height:100%; width:100%; overflow:hidden; background:#07121a; color:#eef6ff; }
+  
+  /* Navigation Bar */
+  nav{ background:rgba(0,0,0,0.9); padding:10px 32px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; border-bottom:1px solid rgba(0,255,255,0.1); }
+  .nav-logo{ display:flex; align-items:center; gap:10px; }
+  .nav-logo svg{ width:35px; height:35px; }
+  nav h1{ color:#00f2ff; font-size:1.3rem; margin:0; letter-spacing:1px; }
+  nav ul{ list-style:none; display:flex; gap:15px; }
+  nav ul a{ color:#fff; text-decoration:none; padding:6px 10px; border-radius:8px; transition:0.25s; font-size:0.9rem; }
+  nav ul a:hover{ background:#00f2ff; color:#02121c; }
+  
+  /* Compact Login Form (Center of Screen) */
+  .page{ 
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    height: calc(100vh - 60px); padding: 20px; 
+  }
+  .form-container { width: 100%; max-width: 350px; text-align: center; }
+  h1{ font-size:1.6rem; margin-bottom:10px; color:#00f2ff; }
+  
+  form{ background:rgba(255,255,255,0.08); border:1px solid rgba(0,255,255,0.18); border-radius:20px; padding:25px; box-shadow:0 15px 35px rgba(0,0,0,0.4); }
+  .field{ margin-bottom:15px; text-align: left; }
+  .field label{ display:block; margin-bottom:8px; color:#b5e7ff; font-size: 0.8rem; }
+  .field input{ width:100%; padding:10px 14px; border-radius:10px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:#eef6ff; outline:none; font-size: 0.9rem; }
+  
+  button{ width:100%; padding:12px; border:none; border-radius:10px; background:#00f2ff; color:#02131c; font-weight:700; cursor:pointer; transition:0.25s; margin-top: 10px; }
+  button:hover{ background:#d4fcff; }
+  .message{ margin-top:10px; color:#ff4b4b; font-size: 0.8rem; min-height: 20px; }
+
+  /* Admin Table Panel (Full Screen Next Page View) */
+  #adminPanel {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #07121a; z-index: 100; display: none; overflow-y: auto; padding: 40px 20px;
+  }
+  .panel-header { display: flex; justify-content: space-between; align-items: center; max-width: 900px; margin: 0 auto 25px; border-bottom: 1px solid #1a2a35; padding-bottom: 15px; }
+  .logout-btn { width: auto; padding: 8px 20px; background: #ff4b4b; color: white; margin: 0; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  
+  .table-wrapper { width: 100%; max-width: 900px; margin: 0 auto; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.03); border-radius: 12px; overflow: hidden; }
+  th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(0,255,255,0.05); font-size: 0.85rem; }
+  th { background: rgba(0,242,255,0.1); color: #00f2ff; }
+  .delete-btn { background: rgba(255, 75, 75, 0.15); color: #ff4b4b; border: 1px solid #ff4b4b; padding: 5px 10px; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+  .delete-btn:hover { background: #ff4b4b; color: #fff; }
+</style>
+</head>
+<body>
+
+  <nav id="topNav">
+    <div class="nav-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="50,12 82,28 82,72 50,88 18,72 18,28" fill="none" stroke="#00f2ff" stroke-width="6"/>
+        <path d="M34 32 C44 22 60 22 60 32 C60 42 42 42 42 52 C42 62 60 62 60 72" fill="none" stroke="#eef6ff" stroke-width="7"/>
+      </svg>
+      <h1>SMART TECH</h1>
+    </div>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="about.html">About Us</a></li>  
+    </ul>
+  </nav>
+
+  <main class="page" id="loginScreen">
+    <div class="form-container">
+      <h1>Admin Dashboard</h1>
+      <p style="color: #8fbfd1; margin-bottom: 15px; font-size: 0.8rem;">Secure Administrative Access</p>
+      <form id="adminForm">
+        <div class="field">
+          <label>Admin User</label>
+          <input type="text" id="adminName" placeholder="Enter username" required>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" id="adminId" placeholder="Enter password" required>
+        </div>
+        <button type="submit">Proceed</button>
+        <div class="message" id="messageArea"></div>
+      </form>
+    </div>
+  </main>
+
+  <section id="adminPanel">
+    <div class="panel-header">
+      <h2 style="color: #00f2ff; font-size: 1.5rem;">Registrations List</h2>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    <div class="table-wrapper" id="tableContainer"></div>
+  </section>
+
+  <script>
+    const adminForm = document.getElementById('adminForm');
+    const loginScreen = document.getElementById('loginScreen');
+    const adminPanel = document.getElementById('adminPanel');
+    const tableContainer = document.getElementById('tableContainer');
+
+    // Handle Login Logic
+    adminForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('adminName').value.trim();
+      const pass = document.getElementById('adminId').value.trim();
+
+      // Check Credentials
+      if(name === 'student' && pass === '969606') {
+        showAdminPanel();
+      } else {
+        document.getElementById('messageArea').textContent = 'Invalid credentials!';
+      }
+    });
+
+    // Function to show the Data Table
+    function showAdminPanel() {
+      loginScreen.style.display = 'none';
+      document.getElementById('topNav').style.display = 'none';
+      adminPanel.style.display = 'block';
+      renderTable();
+    }
+
+    // LOGOUT LOGIC: Direct redirect to login.html
+    function logout() {
+      window.location.href = "login.html"; 
+    }
+
+    // Function to render table from LocalStorage
+    function renderTable() {
+      const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+      if(users.length === 0) {
+        tableContainer.innerHTML = '<p style="text-align:center; margin-top: 30px;">No user records found.</p>';
+        return;
+      }
+
+      let html = `<table><thead><tr><th>#</th><th>Name</th><th>Service</th><th>Email</th><th>Action</th></tr></thead><tbody>`;
+      users.forEach((user, index) => {
+        html += `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${user.username}</td>
+            <td>${user.service}</td>
+            <td>${user.email}</td>
+            <td><button class="delete-btn" onclick="deleteUser(${index})">Remove</button></td>
+          </tr>`;
+      });
+      html += '</tbody></table>';
+      tableContainer.innerHTML = html;
+    }
+
+    // Function to remove user from database
+    window.deleteUser = function(index) {
+      if(confirm('Are you sure you want to delete this record?')) {
+        let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+        users.splice(index, 1);
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+        renderTable();
+      }
+    }
+  </script>
+</body>
+</html>

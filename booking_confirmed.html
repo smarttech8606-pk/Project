@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html,body{ min-height:100%; width:100%; overflow-x:hidden; background:#07121a; color:#eef6ff; }
+  body{ margin:0; }
+  nav{ background:rgba(0,0,0,0.8); padding:10px 32px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
+  .nav-logo{ display:flex; align-items:center; gap:10px; }
+  .nav-logo svg{ width:40px; height:40px; }
+  nav h1{ color:#00f2ff; font-size:1.5rem; margin:0; }
+  nav ul{ list-style:none; display:flex; gap:18px; }
+  nav ul a{ color:#fff; text-decoration:none; padding:8px 12px; border-radius:10px; transition:0.25s; }
+  nav ul a:hover{ background:#00f2ff; color:#02121c; }
+  .page{ max-width:700px; margin:0 auto; padding:100px 24px 60px; text-align:center; }
+  .card{ width:180px; height:180px; border-radius:50%; border:8px solid rgba(0,255,255,0.2); display:flex; align-items:center; justify-content:center; margin:0 auto 32px; position:relative; box-shadow:0 20px 50px rgba(0,0,0,0.35); }
+  .tick{ width:80px; height:40px; border-left:12px solid #00ff6c; border-bottom:12px solid #00ff6c; transform: rotate(-45deg); position:relative; margin-top:18px; animation:pop 0.9s ease forwards; }
+  .circle{ width:100%; height:100%; border-radius:50%; position:absolute; top:0; left:0; box-shadow:0 0 0 rgba(0,255,255,0.4); animation:pulse 1.5s ease-out infinite; }
+  h1{ font-size:3rem; margin-bottom:16px; color:#00f2ff; }
+  p{ font-size:1.05rem; line-height:1.8; color:#bdeaff; margin-bottom:28px; }
+  .button{ display:inline-block; padding:14px 30px; border-radius:999px; background:#00f2ff; color:#02131c; text-decoration:none; font-weight:700; transition:0.25s; }
+  .button:hover{ background:#d4fcff; }
+  footer{ text-align:center; padding:20px; color:#8fbfd1; border-top:1px solid rgba(0,255,255,0.3); margin-top:40px; }
+  @keyframes pop{ 0%{transform:scale(0) rotate(-45deg);} 70%{transform:scale(1.1) rotate(-45deg);} 100%{transform:scale(1) rotate(-45deg);} }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 rgba(0,255,255,0.4);} 70%{box-shadow:0 0 50px rgba(0,255,255,0);} 100%{box-shadow:0 0 0 rgba(0,255,255,0);} }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2ff"/>
+            <stop offset="100%" stop-color="#7cfffb"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,12 82,28 82,72 50,88 18,72 18,28" fill="none" stroke="url(#logoGrad)" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M34 32 C44 22 60 22 60 32 C60 42 42 42 42 52 C42 62 60 62 60 72" fill="none" stroke="#eef6ff" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <h1>SMART TECH</h1>
+    </div>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+  <main class="page">
+    <div class="card">
+      <div class="circle"></div>
+      <div class="tick"></div>
+    </div>
+    <h1>Booking Confirmed</h1>
+    <p>Your booking has been successfully confirmed. Please keep your payment receipt and reference details for records.</p>
+    <a class="button" href="home.html">Back to Home</a>
+  </main>
+  <footer>© 2026 Smart Tech. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+    body{ min-height:100vh; background:#ffffff; color:#111; }
+    nav{ background:#020913; padding:10px 32px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
+    .nav-logo{ display:flex; align-items:center; gap:10px; }
+    .nav-logo svg{ width:40px; height:40px; }
+    nav h1{ color:#00f2ff; font-size:1.5rem; margin:0; }
+    nav ul{ list-style:none; display:flex; gap:18px; }
+    nav ul a{ color:#fff; text-decoration:none; padding:8px 12px; border-radius:10px; transition:0.25s; }
+    nav ul a:hover{ background:#00f2ff; color:#02131c; }
+    .hero-header{ background:#111; color:#fff; padding:20px 24px; text-align:center; }
+    .hero-header h3{ font-size:2.8rem; margin:0; }
+    .page-wrap{ max-width:1200px; margin:0 auto; padding:32px 24px 60px; }
+    .services-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-top:24px; }
+    .service-card{ border:1px solid #e2e2e2; border-radius:20px; overflow:hidden; background:#fafafa; box-shadow:0 18px 40px rgba(0,0,0,0.08); transition:transform 0.3s ease, box-shadow 0.3s ease; }
+    .service-card:hover{ transform:translateY(-6px); box-shadow:0 26px 55px rgba(0,0,0,0.12); background-color: aqua; }
+    .service-card img{ width:100%; height:220px; object-fit:cover; }
+    .service-card h3{ font-size:1.4rem; margin:18px 20px 8px; color:#111; }
+    .service-card p{ font-size:0.95rem; line-height:1.7; margin:0 20px 22px; color:#333; }
+    .service-card a{ color:inherit; text-decoration:none; }
+    footer{ text-align:center; padding:20px; color:#666; border-top:1px solid #ddd; margin-top:40px; }
+    @media(max-width:720px){ .hero-header h3{ font-size:2rem; } .page-wrap{ padding:24px 16px 40px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2ff"/>
+            <stop offset="100%" stop-color="#7cfffb"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,12 82,28 82,72 50,88 18,72 18,28" fill="none" stroke="url(#logoGrad)" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M34 32 C44 22 60 22 60 32 C60 42 42 42 42 52 C42 62 60 62 60 72" fill="none" stroke="#eef6ff" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <h1>SMART TECH</h1>
+    </div>
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+  <section class="hero-header">
+    <h3>Our Services</h3>
+  </section>
+  <div class="page-wrap">
+    <div class="services-grid">
+      <div class="service-card">
+        <a href="register.html">
+          <img src="https://i.pinimg.com/736x/27/aa/db/27aadb99bad5b21e8d7d78d48114c297.jpg" alt="Graphic Designing">
+          <h3>Graphic Designing</h3>
+          <p>Creative logos, banners, posters, and branding designs for businesses that need modern identity solutions.</p>
+        </a>
+      </div>
+      <div class="service-card">
+        <a href="register.html">
+          <img src="https://i.pinimg.com/736x/6a/5f/bc/6a5fbcdafb52ed86f72a836d55b49998.jpg" alt="Web Development">
+          <h3>Web Development</h3>
+          <p>Responsive websites built with the latest technologies to help your business stand out on desktop and mobile.</p>
+        </a>
+      </div>
+      <div class="service-card">
+        <a href="register.html">
+          <img src="https://i.pinimg.com/1200x/91/60/66/916066ea4e93d1c94157987960ba6f03.jpg" alt="App Development">
+          <h3>App Development</h3>
+          <p>High-performance Android and iOS applications with modern UI/UX and seamless functionality.</p>
+        </a>
+      </div>
+      <div class="service-card">
+        <a href="register.html">
+          <img src="https://i.pinimg.com/736x/af/95/8d/af958d67604c020dd9f3be4985e6834d.jpg" alt="Custom Software">
+          <h3>Custom Software</h3>
+          <p>Custom software solutions designed for business automation, reporting, and secure data handling.</p>
+        </a>
+      </div>
+      <div class="service-card">
+        <a href="register.html">
+          <img src="https://i.pinimg.com/736x/3e/c2/77/3ec277d01642ec75eb7d9d0b63af0ee1.jpg" alt="Project Management">
+          <h3>Project Management</h3>
+          <p>Efficient planning and successful delivery of projects through modern management and teamwork.</p>
+        </a>
+      </div>
+      <div class="service-card">
+        <a href="register.html">
+          <img src="https://i.pinimg.com/1200x/a8/99/6d/a8996de7a9b2540d4f2fcbaf16872def.jpg" alt="Portfolio Projects">
+          <h3>Portfolio Projects</h3>
+          <p>Showcasing our latest creative and technical work to help you choose the right digital partner.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer>© 2026 Smart Tech</footer>
+</body>
+</html>

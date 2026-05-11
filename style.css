@@ -1,0 +1,620 @@
+body{
+    font-family: 'Poppins', sans-serif;
+
+background-size: cover;      /* image full page cover kare */
+background-position: center; /* center me rahe */
+background-repeat: no-repeat;
+background-attachment: fixed; /* image scroll par move nahi hogi */
+
+}
+/* LOGIN PAGE */
+
+.login-body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:linear-gradient(to right,#0f2027,#203a43,#2c5364);
+}
+
+.login-container{
+    background:white;
+    padding:40px;
+    width:300px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+.login-container input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.login-container button{
+    width:100%;
+    padding:10px;
+    background:#00f2ff;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.login-container button:hover{
+    background:#111;
+    color:white;
+}
+
+body{
+    background-image: url("background.jpg");  /* your image name */
+    background-size: cover;       /* full screen cover */
+    background-position: center;  /* center image */
+    background-repeat: no-repeat; /* no repeat */
+    background-attachment: fixed; /* parallax effect */
+}
+
+
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: black;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.nav li a:hover {
+    color: aqua;
+}
+
+#aboutSection {
+    padding: 20px;
+}
+
+.service-box {
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.service-box img {
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+
+/* About Page Styling */
+.about-page {
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.about-page h2 {
+    color: aqua;
+    margin-top: 20px;
+}
+
+/* About Page Styling */
+.about-page {
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+/* Heading Color */
+.about-page h2 {
+    color: aqua;
+    margin-top: 20px;
+}
+
+/* Page Animation */
+.animate-page {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideFade 1s ease forwards;
+}
+
+@keyframes slideFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* Home Background Images */
+body{
+background-color:#121212;
+color:white;
+font-family:Arial;
+margin:0;
+padding:0;
+}
+}
+
+/* header */
+header{
+background:#1f1f1f;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+}
+
+.nav{
+list-style:none;
+display:flex;
+gap:20px;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+}
+
+.nav a:hover{
+color:aqua;
+}
+
+/* Home Intro Section */
+
+.paragraph-box{
+    max-width: 700px;
+    margin: 50px auto;
+}
+
+.paragraph-box p{
+
+    text-align: justify;       /* left right equal */
+    text-justify: inter-word;
+
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    hyphens: auto;             /* words break ho jate hain taake line equal ho */
+
+}
+.paragraph-box{
+    max-width:700px;
+    margin:50px auto;
+}
+
+.equal-paragraph{
+
+    text-align: justify;
+    text-justify: inter-word;
+
+    font-family: "Times New Roman", serif;
+    font-size:20px;
+
+    line-height:1.8;
+
+    hyphens:auto;
+
+}
+
+.home-content{
+
+max-width:900px;
+margin:80px auto;
+
+background:rgba(16, 14, 14, 0.85);
+padding:30px;
+
+border-radius:10px;
+
+}
+/* Home Heading Style */
+.home-heading {
+    display: inline-block;       /* width adjustable */
+    max-width: 600px;            /* heading ki length kam karein */
+    width: 90%;                  /* responsive */
+    font-size: 36px;             /* heading ka size adjust */
+    text-align: center;
+    margin: 40px auto;           /* center horizontally */
+    color: #000000;              /* black color */
+    padding: 10px 20px;          /* thoda padding */
+    background: rgba(8, 8, 8, 0.938); /* optional subtle background */
+    border-radius: 8px;          /* rounded edges optional */
+}
+/* Footer Style */
+.site-footer {
+    max-width: 800px;            /* footer width kam karein */
+    width: 90%;                  /* responsive */
+    margin: 20px auto;           /* center horizontally */
+    text-align: center;
+    padding: 20px 10px;
+    background: #1f1f1f;
+    color: black;
+    border-radius: 8px;          /* optional rounded edges */
+}
+.home-heading {
+    font-family: 'Poppins', sans-serif;  /* Modern professional font */
+    font-size: 60px;                      /* Heading ka size bada */
+    font-weight: 600;                     /* Semi-bold */
+    text-align: center;                   /* Centered */
+    max-width: 800px;                     /* Max width */
+    margin: 60px auto;                    /* Center horizontally with space */
+    color: #00bcd4;                       /* Aqua color matching website */
+    line-height: 1.2;                     /* Nice spacing between lines */
+}
+/* Home Heading Style */
+.home-heading {
+    display: inline-block;       /* width adjustable */
+    max-width: 600px;            /* heading ki length kam karein */
+    width: 90%;                  /* responsive */
+    font-size: 36px;             /* heading ka size adjust */
+    text-align: center;
+    margin: 40px auto;           /* center horizontally */
+    color: #000000;              /* black color */
+    padding: 10px 20px;          /* thoda padding */
+    background: rgba(255,255,255,0.1); /* optional subtle background */
+    border-radius: 8px;          /* rounded edges optional */
+}
+/* Footer Style */
+.site-footer {
+    max-width: 800px;            /* footer width kam karein */
+    width: 90%;                  /* responsive */
+    margin: 20px auto;           /* center horizontally */
+    text-align: center;
+    padding: 20px 10px;
+    background: #1f1f1f;
+    color: white;
+    border-radius: 8px;          /* optional rounded edges */
+}
+.home-hero::before{
+
+content:"";
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.35);
+
+}
+.home-hero::before{
+
+content:"";
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0, 200, 255, 0.35);
+}
+.home-paragraph{
+
+font-family: 'Poppins', sans-serif;
+
+font-size: 26px;       /* paragraph size increase */
+font-weight: bold;     /* bold text */
+
+max-width: 850px;      /* width control taake 3 lines ban jaye */
+margin: 40px auto;
+
+text-align: center;
+line-height: 1.6;
+
+color: #ffffff;
+
+/* animation */
+animation: slideUp 2s ease;
+
+}
+
+/* Slide Animation */
+
+@keyframes slideUp{
+
+from{
+transform: translateY(80px);
+opacity:0;
+}
+
+to{
+transform: translateY(0);
+opacity:1;
+}
+
+}
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: black;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.nav li a:hover {
+    color: aqua;
+}
+.services{
+background:black;
+padding:50px 20px;
+text-align:center;
+}
+
+.services{
+    width:100%;
+    padding:60px 0;
+    text-align:center;
+}
+
+.services-title{
+    font-size:32px;
+    margin-bottom:40px;
+    color:#000; /* title color */
+}
+
+/* GRID */
+
+.services-grid{
+    width:80%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+}
+
+/* CARD WITHOUT BOX */
+
+.service-card{
+    padding:10px 0;  /* thodi padding sirf content ke liye */
+    text-align:center;
+    transition:0.3s;
+    background:transparent; /* koi box ya color nahi */
+}
+/* Heading Top Center */
+.services-title{
+    font-size: 40px;
+    color: black;
+    text-align: center;
+    margin-bottom: 0%;
+}
+.service-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+   /* hover effect */
+.service-card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 15px aqua;
+transition:0.4s;
+}
+
+.service-card h3{
+    margin-top:15px;
+    color:white;  /* white heading */
+    font-family:serif;
+}
+
+.service-card p{
+    color:white;
+font-size:14px;
+padding:0 15px;
+}
+body{
+
+margin:0;
+font-family:Arial;
+color:white;
+
+/* FULL BACKGROUND IMAGE */
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+
+}
+
+/* DARK OVERLAY */
+
+.overlay{
+
+background:rgba(0,0,0,0.65);
+padding:60px;
+
+}
+
+/* TITLE */
+
+.title{
+
+font-size:60px;
+letter-spacing:3px;
+
+}
+
+.title span{
+
+color:#00eaff;
+
+}
+
+/* TEXT */
+
+.subtitle{
+
+font-size:22px;
+margin-top:10px;
+
+}
+
+.text{
+
+width:60%;
+margin-top:15px;
+line-height:1.6;
+
+}
+
+/* BUTTON */
+
+.btn{
+
+margin-top:20px;
+padding:12px 30px;
+background:transparent;
+border:2px solid #00eaff;
+color:white;
+cursor:pointer;
+
+}
+
+.btn:hover{
+
+background:#00eaff;
+color:black;
+
+}
+
+/* WHO SECTION */
+
+.who{
+
+margin-top:60px;
+
+}
+
+.who-box{
+
+background:rgba(0,20,40,0.8);
+padding:30px;
+border:1px solid #00eaff;
+width:420px;
+
+}
+
+/* ICONS */
+
+.icons{
+
+display:flex;
+gap:40px;
+margin-top:20px;
+
+}
+
+/* SERVICES */
+
+.services{
+
+display:flex;
+gap:40px;
+margin-top:50px;
+
+}
+
+.box{
+
+flex:1;
+background:rgba(0,20,40,0.8);
+padding:30px;
+border:1px solid #00eaff;
+
+}
+
+/* LIST */
+
+ul{
+
+list-style:none;
+padding:0;
+
+}
+
+li{
+
+margin:15px 0;
+
+}
+
+/* ACHIEVEMENTS */
+
+.achievements{
+
+text-align:center;
+margin-top:70px;
+
+}
+
+.stats{
+
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:30px;
+
+}
+
+.stat{
+
+background:rgba(0,20,40,0.8);
+padding:25px;
+border:1px solid #00eaff;
+width:150px;
+
+}
+
+.stat h3{
+
+font-size:35px;
+color:#00eaff;
+
+}

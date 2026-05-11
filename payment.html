@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Tech Payment</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  
+  /* Poora page fix karne ke liye */
+  html, body { height: 100vh; width: 100%; overflow: hidden; background:#07121a; color:#eef6ff; }
+  body { display: flex; flex-direction: column; }
+
+  nav { background:rgba(0,0,0,0.85); padding:8px 24px; display:flex; justify-content:space-between; align-items:center; flex-shrink: 0; border-bottom: 1px solid rgba(0,255,255,0.1); }
+  .nav-logo { display:flex; align-items:center; gap:8px; }
+  .nav-logo svg { width:30px; height:30px; }
+  nav h1 { color:#00f2ff; font-size:1.2rem; margin:0; letter-spacing: 1px; }
+  nav ul { list-style:none; display:flex; gap:12px; }
+  nav ul a { color:#fff; text-decoration:none; padding:4px 8px; border-radius:6px; font-size: 0.8rem; }
+nav ul a:hover { background:#00f2ff; color:#01111b; }   
+  .page-wrap { flex: 1; display:flex; align-items:center; justify-content:center; padding:10px; }
+  
+  .payment-box { 
+    width: 100%; max-width: 400px; 
+    background:rgba(255,255,255,0.08); backdrop-filter:blur(20px); 
+    border:1px solid rgba(0,255,255,0.2); border-radius:24px; 
+    padding: 25px; box-shadow:0 15px 35px rgba(0,0,0,0.5); 
+    text-align: center;
+  }
+
+  h2 { color:#00f2ff; font-size:1.4rem; margin-bottom:15px; }
+
+  /* Logo properly fix karne ke liye */
+  .radio-group { display: grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-bottom: 15px; }
+  .radio-inline { 
+    padding:10px 5px; border:1px solid rgba(255,255,255,0.1); border-radius:15px; 
+    cursor:pointer; font-size: 0.7rem; display: flex; flex-direction: column; align-items: center; gap: 6px;
+    transition: 0.3s; background: rgba(255,255,255,0.03);
+  }
+  .radio-inline input { display: none; }
+  .radio-inline:hover { background: rgba(0,255,255,0.05); }
+  .radio-inline:has(input:checked) { background: rgba(0,255,255,0.15); border-color: #00f2ff; transform: scale(1.05); }
+  
+  .method-img { 
+    width: 45px; height: 45px; border-radius: 10px; 
+    object-fit: contain; background: #fff; padding: 4px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .field { text-align: left; margin-bottom: 12px; }
+  .field label { display:block; margin-bottom:5px; color:#bdeeff; font-size:0.75rem; font-weight: 500; }
+  .field input { 
+    width:100%; padding:10px 14px; border-radius:10px; 
+    border:1px solid rgba(255,255,255,0.15); background:rgba(0,0,0,0.2); 
+    color:#fff; font-size: 0.85rem; outline: none; transition: 0.3s;
+  }
+  .field input:focus { border-color: #00f2ff; background: rgba(0,255,255,0.05); }
+
+  .btn-confirm { 
+    width:100%; padding:12px; border:none; border-radius:12px; 
+    background:#00f2ff; color:#02121c; font-weight:700; 
+    cursor:pointer; font-size: 0.9rem; margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(0,242,255,0.3);
+  }
+
+  /* --- Success Screen (Receipt Style) --- */
+  #successScreen { display: none; animation: slideUp 0.5s ease-out; }
+  
+  .check-icon { 
+    width: 80px; height: 80px; background: #00c853; border-radius: 50%; 
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+    box-shadow: 0 0 25px rgba(0,200,83,0.5);
+  }
+  .check-icon svg { width: 45px; height: 45px; fill: white; }
+
+  .amount-val { font-size: 2.2rem; font-weight: 600; color: #fff; margin-bottom: 5px; }
+  .amount-val span { font-size: 1.1rem; opacity: 0.8; margin-right: 4px; }
+  
+  .success-msg { color: #00f2ff; font-size: 1.1rem; font-weight: 500; margin-bottom: 15px; }
+  
+  .receipt-details { 
+    background: rgba(255,255,255,0.05); border-radius: 15px; 
+    padding: 15px; margin-bottom: 20px; border: 1px dashed rgba(0,255,255,0.3);
+  }
+  .receipt-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
+  .receipt-label { color: #a7e4ff; }
+  .receipt-value { color: #fff; font-weight: 600; }
+
+  .user-avatar {
+    width: 65px; height: 65px; background: linear-gradient(135deg, #00f2ff, #0072ff); 
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: 700; color: #000; margin: 0 auto 15px;
+    border: 3px solid rgba(255,255,255,0.2);
+  }
+
+  .done-btn { 
+    display: inline-block; width: 100%; padding: 12px; 
+    background: transparent; border: 1px solid #00f2ff; color: #00f2ff; 
+    border-radius: 12px; text-decoration: none; font-weight: 600; transition: 0.3s;
+  }
+  .done-btn:hover { background: #00f2ff; color: #000; }
+
+  footer { text-align:center; padding:10px; color:#8fbfd1; border-top:1px solid rgba(0,255,255,0.1); font-size: 0.75rem; flex-shrink: 0; }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <svg viewBox="0 0 100 100"><polygon points="50,12 82,28 82,72 50,88 18,72 18,28" fill="none" stroke="#00f2ff" stroke-width="6"/><path d="M34 32 C44 22 60 22 60 32 C60 42 42 42 42 52 C42 62 60 62 60 72" fill="none" stroke="#fff" stroke-width="7"/></svg>
+      <h1>SMART TECH</h1>
+    </div>
+    <ul>
+      <li><a herf="login.html">login</a></li>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a herf="admin.html">Admin</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrap">
+    <div class="payment-box" id="paymentMain">
+      <h2>Payment Method</h2>
+      <form id="payForm">
+        <div class="radio-group">
+          <label class="radio-inline">
+            <input type="radio" name="method" value="JazzCash" required>
+            <img src="https://tse2.mm.bing.net/th/id/OIP.yNCqFXgR-Im3amwCkziEiQHaHa?pid=Api&h=220&P=0" class="method-img" alt="Jazz">
+            <span>JazzCash</span>
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="method" value="EasyPaisa" required>
+            <img src="https://tse1.mm.bing.net/th/id/OIP.Or2d2vwfE2T6vl032UY68gHaEK?pid=Api&h=220&P=0" class="method-img" alt="EP">
+            <span>EasyPaisa</span>
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="method" value="Bank" required>
+            <img src="https://up.yimg.com/ib/th/id/OIP.hx6Xv_z3VzwY38kb6z5FUQHaHa?pid=Api&rs=1&c=1&qlt=95&w=123&h=123" class="method-img" alt="Bank">
+            <span>Bank Transfer</span>
+          </label>
+        </div>
+
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" id="userNameInput" placeholder="Enter recipient name" required>
+        </div>
+
+        <div class="field">
+          <label>Account / Mobile Number</label>
+          <input type="text" placeholder="03xx-xxxxxxx" required>
+        </div>
+
+        <div class="field">
+          <label>Transaction ID</label>
+          <input type="text" placeholder="TRX-123456" required>
+        </div>
+
+        <button type="submit" class="btn-confirm">Confirm Payment</button>
+      </form>
+    </div>
+
+    <div class="payment-box" id="successScreen">
+      <div class="check-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      </div>
+      <div class="amount-val"><span>Rs.</span>5,000.00</div>
+      <div class="success-msg">Payment Received</div>
+      
+      <div class="receipt-details">
+        <div class="user-avatar" id="nameBadge">MB</div>
+        <div class="receipt-row">
+          <span class="receipt-label">Sent to:</span>
+          <span class="receipt-value" id="displayUserName">Muhammad Bin</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label">Status:</span>
+          <span class="receipt-value" style="color: #0f6;">Verified</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label">Date:</span>
+          <span class="receipt-value">May 2026</span>
+        </div>
+      </div>
+      
+      <a href="Admin.html" class="done-btn">Back to Admin</a>
+    </div>
+  </div>
+
+  <footer>© 2026 Smart Tech. All rights reserved.</footer>
+
+  <script>
+    const payForm = document.getElementById('payForm');
+    const paymentMain = document.getElementById('paymentMain');
+    const successScreen = document.getElementById('successScreen');
+    const userNameInput = document.getElementById('userNameInput');
+    const displayUserName = document.getElementById('displayUserName');
+    const nameBadge = document.getElementById('nameBadge');
+
+    payForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Name Display Logic
+      const name = userNameInput.value.trim();
+      displayUserName.textContent = name;
+      
+      // First letter for Badge (e.g., 'Muhammad' -> 'M')
+      nameBadge.textContent = name.charAt(0).toUpperCase();
+
+      // Switch Screens
+      paymentMain.style.display = 'none';
+      successScreen.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

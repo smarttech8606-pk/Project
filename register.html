@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Tech Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+  html,body{ min-height:100%; width:100%; overflow-x:hidden; background:#07121a; color:#eef6ff; }
+  body{ margin:0; }
+  header{ background:rgba(0,0,0,0.75); padding:10px 28px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:10; }
+  .nav-logo{ display:flex; align-items:center; gap:10px; }
+  .nav-logo svg{ width:40px; height:40px; }
+  header h1{ color:#00f2ff; font-size:1.5rem; margin:0; }
+  .nav{ list-style:none; display:flex; gap:18px; }
+  .nav a{ text-decoration:none; color:#fff; padding:8px 12px; border-radius:10px; transition:0.25s; }
+  .nav a:hover{ background:#00f2ff; color:#02121c; }
+  .container{ min-height:calc(100vh - 96px); display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+  form{ width:100%; max-width:460px; background:rgba(255,255,255,0.08); backdrop-filter:blur(16px); border:1px solid rgba(0,255,255,0.18); border-radius:24px; padding:36px 32px; box-shadow:0 20px 50px rgba(0,0,0,0.32); }
+  h2{ color:#00f2ff; margin-bottom:26px; text-align:center; font-size:2rem; }
+  .input-box{ position:relative; margin-bottom:18px; }
+  .input-box input,
+  .input-box select{ width:100%; padding:14px 16px; border-radius:14px; border:1px solid rgba(255,255,255,0.18); background:#07121a; color:#eef6ff; outline:none; }
+  .input-box select{ appearance:none; -webkit-appearance:none; -moz-appearance:none; background-image:linear-gradient(45deg, transparent 50%, #eef6ff 50%), linear-gradient(135deg, #eef6ff 50%, transparent 50%); background-position:calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px); background-size:5px 5px, 5px 5px; background-repeat:no-repeat; }
+  .input-box option{ background:#07121a; color:#eef6ff; }
+  .input-box label{ position:absolute; top:12px; left:16px; pointer-events:none; font-size:0.95rem; color:#b5e7ff; transition:0.2s; }
+  .input-box input:focus + label,
+  .input-box input:not(:placeholder-shown) + label,
+  .input-box select:focus + label,
+  .input-box select:valid + label{ top:-10px; left:14px; font-size:0.8rem; color:#00f2ff; background:rgba(7,18,26,0.9); padding:0 6px; }
+  .password-box span{ position:absolute; right:16px; top:50%; transform:translateY(-50%); cursor:pointer; color:#00f2ff; font-size:1rem; }
+  button{ width:100%; margin-top:10px; padding:14px; border:none; border-radius:14px; background:#00f2ff; color:#02131c; font-weight:700; cursor:pointer; transition:0.2s; }
+  button:hover{ background:#d4fcff; }
+  @media(max-width:600px){ form{ padding:28px 20px; } }
+</style>
+</head>
+<body>
+  <header>
+    <div class="nav-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f2ff"/>
+            <stop offset="100%" stop-color="#7cfffb"/>
+          </linearGradient>
+        </defs>
+        <polygon points="50,12 82,28 82,72 50,88 18,72 18,28" fill="none" stroke="url(#logoGrad)" stroke-width="6" stroke-linejoin="round"/>
+        <path d="M34 32 C44 22 60 22 60 32 C60 42 42 42 42 52 C42 62 60 62 60 72" fill="none" stroke="#eef6ff" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <h1>SMART TECH</h1>
+    </div>
+    <ul class="nav">
+      <li><a href="login.html">Login</a></li>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </header>
+  <div class="container">
+    <form id="regForm">
+      <h2>Smart Tech Registration</h2>
+      <div class="input-box">
+        <input type="text" id="username" name="username" placeholder=" " required>
+        <label>User Name</label>
+      </div>
+      <div class="input-box password-box">
+        <input type="password" id="password" name="password" placeholder=" " required>
+        <label>Password</label>
+        <span id="toggle">👁</span>
+      </div>
+      <div class="input-box">
+        <input type="email" id="email" name="email" placeholder=" " required>
+        <label>Email</label>
+      </div>
+      <div class="input-box">
+        <input type="tel" id="phone" name="phone" placeholder=" " required>
+        <label>Contact Number</label>
+      </div>
+      <div class="input-box">
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select Service</option>
+          <option value="Graphic Designing">Graphic Designing</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="App Development">App Development</option>
+        </select>
+        <label>Service</label>
+      </div>
+      <button type="submit">Continue to Payment</button>
+    </form>
+  </div>
+  <footer style="text-align:center; padding:20px; color:#8fbfd1; border-top:1px solid rgba(0,255,255,0.3); margin-top:40px;">© 2026 Smart Tech. All rights reserved.</footer>
+  <script src="register.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Smart Tech</title>
+<style>
+/* --- Global Styles --- */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+body {
+  min-height:100vh;
+  background: linear-gradient(-45deg, #0ff, #000, #0ff, #000);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color:#fff;
+  overflow-x:hidden;
+  position: relative;
+}
+@keyframes gradientBG {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
+/* --- Particle Canvas --- */
+#particles {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%; z-index:-1;
+}
+
+/* --- Container --- */
+.container {
+  max-width:1200px;
+  margin:0 auto;
+  padding:100px 20px;
+  text-align:center;
+}
+h1 { font-size:3em; margin-bottom:10px; color:#0ff; text-shadow:0 0 10px #0ff; }
+p { font-size:18px; margin-bottom:50px; }
+
+/* --- Glass Cards --- */
+.cards {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  margin-bottom:50px;
+}
+.card {
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(0,255,255,0.3);
+  backdrop-filter: blur(15px);
+  border-radius:25px;
+  padding:30px;
+  width:300px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow:0 0 50px #0ff,0 0 100px #0ff;
+  border: color #0ff;;
+}
+.card h2 { margin-bottom:15px; color:#0ff; }
+.card p { font-size:16px; line-height:1.5; }
+
+/* --- Stats Section --- */
+.stats {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:50px;
+  margin-bottom:50px;
+}
+.stat-container {
+  opacity:0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+.stat-container.visible {
+  opacity:1;
+  transform: translateY(0);
+}
+.stat { font-size:40px; color:#0ff; font-weight:bold; transition: transform 0.3s ease; }
+.stat:hover { transform: scale(1.2); }
+.stat-label { font-size:18px; margin-top:5px; color:#fff; }
+
+/* --- Buttons --- */
+.btn {
+  display:inline-block;
+  padding:15px 35px;
+  font-size:18px;
+  color:#0ff;
+  border:2px solid #0ff;
+  border-radius:30px;
+  text-decoration:none;
+  transition: all 0.3s ease;
+  margin-top:20px;
+  position: relative;
+  z-index:1;
+}
+.btn:hover {
+  background:#0ff;
+  color:#000;
+  box-shadow:0 0 20px #0ff,0 0 40px #0ff;
+}
+
+/* --- Responsive --- */
+@media(max-width:960px){
+  .cards,.stats { flex-direction:column; align-items:center; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="container">
+  <h1>About Us - Smart Tech</h1>
+  <p>Smart Tech is a forward-thinking software house dedicated to providing innovative technology solutions. We specialize in delivering high-quality software services that empower businesses and individuals alike.</p>
+
+  <!-- Glass Cards -->
+  <div class="cards">
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>Deliver cutting-edge software solutions with excellence, efficiency, and innovation to empower clients.</p>
+    </div>
+    <div class="card">
+      <h2>Our Vision</h2>
+      <p>Become a leading software house recognized for creativity, professionalism, and technological impact.</p>
+    </div>
+    <div class="card">
+      <h2>Our Values</h2>
+      <p>Integrity, innovation, excellence, and client satisfaction are at the core of everything we do.</p>
+    </div>
+    <div class="card">
+      <h2>Our Expertise</h2>
+      <p>End-to-end solutions including web development, mobile apps, UI/UX design, and custom software tailored to your needs.</p>
+    </div>
+  </div>
+
+  <!-- Optional Stats Section -->
+  <div class="stats">
+    <div class="stat-container">
+      <div class="stat" data-target="120">0</div>
+      <div class="stat-label">Projects Completed</div>
+    </div>
+    <div class="stat-container">
+      <div class="stat" data-target="50">0</div>
+      <div class="stat-label">Clients Served</div>
+    </div>
+    <div class="stat-container">
+      <div class="stat" data-target="25">0</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+  </div>
+
+  <a href="services.html" class="btn" id="getStartedBtn">Get Started</a>
+  <a href="index.html" class="btn">Back to Home</a>
+</div>
+
+<script>
+// --- Stats Counter ---
+const counters = document.querySelectorAll('.stat');
+counters.forEach(counter=>{
+  counter.innerText='0';
+  const updateCounter=()=>{
+    const target=+counter.getAttribute('data-target');
+    const count=+counter.innerText;
+    const increment=target/200;
+    if(count<target){
+      counter.innerText=Math.ceil(count+increment);
+      setTimeout(updateCounter,20);
+    } else { counter.innerText=target; }
+  };
+  updateCounter();
+});
+
+// --- Scroll Fade-in ---
+const statContainers = document.querySelectorAll('.stat-container');
+window.addEventListener('scroll',()=>{
+  const triggerBottom=window.innerHeight-100;
+  statContainers.forEach(container=>{
+    const boxTop=container.getBoundingClientRect().top;
+    if(boxTop<triggerBottom){ container.classList.add('visible'); }
+  });
+});
+
+// --- Particle Background with Lines ---
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+const particlesArray=[];
+class Particle{
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*3+1;
+    this.speedX=Math.random()*1-0.5;
+    this.speedY=Math.random()*1-0.5;
+  }
+  update(){
+    this.x+=this.speedX;
+    this.y+=this.speedY;
+    if(this.x>canvas.width) this.x=0;
+    if(this.x<0) this.x=canvas.width;
+    if(this.y>canvas.height) this.y=0;
+    if(this.y<0) this.y=canvas.height;
+  }
+  draw(){
+    ctx.fillStyle='#0ff';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+function connectParticles(){
+  for(let a=0;a<particlesArray.length;a++){
+    for(let b=a;b<particlesArray.length;b++){
+      let dx=particlesArray[a].x-particlesArray[b].x;
+      let dy=particlesArray[a].y-particlesArray[b].y;
+      let distance=Math.sqrt(dx*dx+dy*dy);
+      if(distance<100){
+        ctx.strokeStyle='rgba(0,255,255,'+(1-distance/100)+')';
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x,particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x,particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+function init(){ for(let i=0;i<120;i++){ particlesArray.push(new Particle()); } }
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particlesArray.forEach(p=>{ p.update(); p.draw(); });
+  connectParticles();
+  requestAnimationFrame(animate);
+}
+init();
+animate();
+window.addEventListener('resize',()=>{
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+});
+
+// --- Get Started Button Redirect ---
+document.getElementById('getStartedBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  window.location.href = 'services.html';
+});
+</script>
+
